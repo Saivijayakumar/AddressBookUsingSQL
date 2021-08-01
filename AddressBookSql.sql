@@ -15,4 +15,5 @@ update Address_Book_Table set Email='arun.k@gmail.com' where FirstName = 'Arun';
 select * from Address_Book_Table where FirstName ='Arun';
 ------------UC5 : Delete Contact-----------
 delete from Address_Book_Table where FirstName = 'sai';
-----------------
+----------------UC6: Retrieve person Belonging to city or state------
+select * from Address_Book_Table where City = 'Hyderabad' or State = 'AP';
