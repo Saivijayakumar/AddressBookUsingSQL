@@ -17,3 +17,7 @@ select * from Address_Book_Table where FirstName ='Arun';
 delete from Address_Book_Table where FirstName = 'sai';
 ----------------UC6: Retrieve person Belonging to city or state------
 select * from Address_Book_Table where City = 'Hyderabad' or State = 'AP';
+-------------UC7: Count Of Person Base On State and City-------------
+select count(*) as TotalCount,State from Address_Book_Table group by State;
+select count(*) as TotalCount,City from Address_Book_Table group by City;
+select * from Address_Book_Table;
