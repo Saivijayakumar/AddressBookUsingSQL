@@ -10,3 +10,6 @@ Insert into Address_Book_Table values('sai','kumar','Gandinagar second street','
 ('Arun','k','Gandinagar Third street','Hyderabad','TS',54423,9474738489,'arun@gmail.com'),('sasi','kanth','Gandinagar street','Nellore','Ap',53423,888585854,'sasi22@gmail.com'),
 ('vijaya','M','36 Newburgh','Goa','TN',53333,93757889809,'luck@gmail.com');
 select * from Address_Book_Table;
+-------------UC4: Edit Contacts------------
+update Address_Book_Table set Email='arun.k@gmail.com' where FirstName = 'Arun';
+select * from Address_Book_Table where FirstName ='Arun';
