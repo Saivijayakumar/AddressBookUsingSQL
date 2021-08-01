@@ -29,3 +29,5 @@ alter table Address_Book_Table add AddressBookName varchar(100) not null default
 update Address_Book_Table set AddressBookName='Good',Type = 'Family' where State='Ap';
 update Address_Book_Table set AddressBookName='Perfect',Type = 'Profession' where State='TN';
 select * from Address_Book_Table;
+------------------UC10 : Display count of Contacts Based on Type---------------
+select count(*) as TotalContacts,Type from Address_Book_Table group by Type;
