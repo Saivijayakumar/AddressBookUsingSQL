@@ -23,4 +23,9 @@ select count(*) as TotalCount,City from Address_Book_Table group by City;
 select * from Address_Book_Table;
 -------------UC8: Display the contacts in Sorted Order-----
 select * from Address_Book_Table order by (FirstName);
---------------
+--------------UC9: Identify each Address Book with Name and Type-----------
+alter table Address_Book_Table add AddressBookName varchar(100) not null default 'LocalBook',Type varchar(100) not null default 'LocalType';
+
+update Address_Book_Table set AddressBookName='Good',Type = 'Family' where State='Ap';
+update Address_Book_Table set AddressBookName='Perfect',Type = 'Profession' where State='TN';
+select * from Address_Book_Table;
