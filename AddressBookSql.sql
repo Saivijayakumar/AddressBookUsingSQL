@@ -13,3 +13,6 @@ select * from Address_Book_Table;
 -------------UC4: Edit Contacts------------
 update Address_Book_Table set Email='arun.k@gmail.com' where FirstName = 'Arun';
 select * from Address_Book_Table where FirstName ='Arun';
+------------UC5 : Delete Contact-----------
+delete from Address_Book_Table where FirstName = 'sai';
+----------------
