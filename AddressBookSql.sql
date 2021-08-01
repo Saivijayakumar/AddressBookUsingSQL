@@ -21,3 +21,6 @@ select * from Address_Book_Table where City = 'Hyderabad' or State = 'AP';
 select count(*) as TotalCount,State from Address_Book_Table group by State;
 select count(*) as TotalCount,City from Address_Book_Table group by City;
 select * from Address_Book_Table;
+-------------UC8: Display the contacts in Sorted Order-----
+select * from Address_Book_Table order by (FirstName);
+--------------
