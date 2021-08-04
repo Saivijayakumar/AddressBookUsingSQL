@@ -31,3 +31,8 @@ update Address_Book_Table set AddressBookName='Perfect',Type = 'Profession' wher
 select * from Address_Book_Table;
 ------------------UC10 : Display count of Contacts Based on Type---------------
 select count(*) as TotalContacts,Type from Address_Book_Table group by Type;
+select * from Address_Book_Table;
+------------------UC11:Adding person to Both Friends and Family Type
+insert into Address_Book_Table values 
+('sasi','kanth','Gandinagar street','Nellore','Ap',53423,888585854,'sasi22@gmail.com','Good','Friend');
+select * from Address_Book_Table;
