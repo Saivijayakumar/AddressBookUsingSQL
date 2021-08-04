@@ -36,3 +36,43 @@ select * from Address_Book_Table;
 insert into Address_Book_Table values 
 ('sasi','kanth','Gandinagar street','Nellore','Ap',53423,888585854,'sasi22@gmail.com','Good','Friend');
 select * from Address_Book_Table;
+------------------UC12:Implementing ER Dagram----
+create table AddressBook
+(AddressBookID int identity(1,1) primary key,AddressBookName varchar(50));
+
+insert into AddressBook values ('Rockers'),('Silent');
+select * from AddressBook;
+
+create table PersonType(
+PersonTypeID int identity(1,1) primary key,PersonType varchar(50));
+
+insert into PersonType values ('Family'),('Friend'),('Profession');
+select * from PersonType;
+
+create table Person(
+PersonID int identity(1,1) primary key,
+AddressBookID int,
+FirstName varchar(50),
+LastName varchar(50),
+Address Varchar(50),
+City varchar(50),
+State varchar(50),
+ZipCode int ,
+PhoneNumber bigint,
+EmailID varchar(30),
+foreign key (AddressBookID) references AddressBook(AddressBookID));
+
+insert into Person values (1,'Ram','K','Egmore','Chennai','TN',694938,9984948393,'Ram@gmail.com'),
+(2,'vijay','B','Palakkad','Kochin','TN',89889,998848383,'Vijay@gmail.com'),
+(2,'kumar','V','SBI','Nellore','AP',524137,98664983939,'Kumar2@gmail.com');
+select * from Person;
+
+create table PersonTypeMap(
+PersonID int foreign key references Person(PersonID),
+PersonTypeID int foreign key references PersonType(PersonTypeID)
+);
+
+insert into PersonTypeMap values (1,1),(2,2),(3,3),(2,1);
+
+select * from PersonTypeMap;
+-------------------------------------
