@@ -75,4 +75,34 @@ PersonTypeID int foreign key references PersonType(PersonTypeID)
 insert into PersonTypeMap values (1,1),(2,2),(3,3),(2,1);
 
 select * from PersonTypeMap;
--------------------------------------
+------------UC13:Ensure all retrieve queries done especially in UC 6, UC 7, UC 8 andUC 10 are working with new table structure
+----Retrive all data using parent child relation
+select p.PersonID,concat(p.FirstName,'.',p.LastName)as Name,concat(p.Address,',',p.City,',',p.State,',',p.ZipCode) as Address,p.PhoneNumber,p.EmailID,
+pt.PersonTypeID,pt.PersonType,ab.AddressBookID ,ab.AddressBookName
+from AddressBook ab,Person p,PersonType pt,PersonTypeMap ptm
+where ab.AddressBookID=p.AddressBookID  and p.PersonID=ptm.PersonID and ptm.PersonTypeID=pt.PersonTypeID;
+-------------Retrive  using city or state
+select p.PersonID,concat(p.FirstName,'.',p.LastName)as Name,concat(p.Address,',',p.City,',',p.State,',',p.ZipCode) as Address,p.PhoneNumber,p.EmailID,
+pt.PersonTypeID,pt.PersonType,ab.AddressBookID ,ab.AddressBookName
+from AddressBook ab,Person p,PersonType pt,PersonTypeMap ptm
+where (ab.AddressBookID=p.AddressBookID  and p.PersonID=ptm.PersonID and ptm.PersonTypeID=pt.PersonTypeID) and (City='Nellore' or State='AP') ;
+--------------Retrive count of person by city and state
+-----State
+select count(*)as PersonCount,State
+from Person 
+inner join AddressBook on Person.AddressBookID= AddressBook.AddressBookID group by State;
+----City
+select count(*)as PersonCount,City
+from Person 
+inner join AddressBook on Person.AddressBookID= AddressBook.AddressBookID group by City;
+-------------------Retrive with Name Order
+select p.PersonID,concat(p.FirstName,'.',p.LastName)as Name,
+concat(p.Address,',',p.City,',',p.State,',',p.ZipCode) as Address,p.PhoneNumber,p.EmailID,
+pt.PersonTypeID,pt.PersonType,ab.AddressBookID ,ab.AddressBookName
+from AddressBook ab,Person p,PersonType pt,PersonTypeMap ptm
+where (ab.AddressBookID=p.AddressBookID  and p.PersonID=ptm.PersonID and ptm.PersonTypeID=pt.PersonTypeID) and (State='TN') order by FirstName;
+----------------------Number of Persons using Type
+SELECT COUNT(*) as RelationCount,pt.PersonType FROM
+PersonTypeMap AS ptm 
+inner join PersonType as pt On pt.PersonTypeId = ptm.PersonTypeId
+inner join Person as p on p.PersonId = ptm.PersonId GROUP BY pt.PersonType;
